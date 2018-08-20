@@ -10,7 +10,6 @@ import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 public class Presenter {
 
 
-
     private WeatherDataProvider weatherDataProvider = new WeatherDataProvider();
 
     public void updateWeatherDetails(final ActivityMainBinding binding, Context context) {
@@ -37,6 +36,6 @@ public class Presenter {
 
         Toast.makeText(context, "Refreshing Data", Toast.LENGTH_LONG)
                 .show();
-        updateWeatherDetails(binding,context);
+        updateWeatherDetails(binding, context);
     }
 }

@@ -2,35 +2,49 @@ package com.example.paritosh.stormy;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.paritosh.stormy.databinding.ActivityMainBinding;
+import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 
-public class MainActivity extends AppCompatActivity {
+public class WeatherActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private Presenter presenter = new Presenter();
+    private WeatherPresenter presenter = new WeatherPresenter(this);
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         TextView textView = findViewById(R.id.darkSkyAttribution);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         ImageView refreshImageView = findViewById(R.id.refreshImageView);
         refreshImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.refreshWeatherData(binding, MainActivity.this);
+                presenter.refreshWeatherData();
             }
         });
 
-        presenter.updateWeatherDetails(binding, this);
+
+        presenter.updateWeatherDetails();
+    }
+
+    public void render(CurrentWeatherDataBindingModel model) {
+        binding.setWeather(model);
+
+    }
+
+    public void showMessage(@StringRes int toast_refreshing_data) {
+        Toast.makeText(this, toast_refreshing_data, Toast.LENGTH_SHORT)
+                .show();
     }
 
 

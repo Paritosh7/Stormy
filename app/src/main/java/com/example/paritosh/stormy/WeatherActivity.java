@@ -33,7 +33,6 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
 
-
         presenter.updateWeatherDetails();
     }
 
@@ -42,8 +41,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     }
 
-    public void showMessage(@StringRes int toast_refreshing_data) {
-        Toast.makeText(this, toast_refreshing_data, Toast.LENGTH_SHORT)
+    public void showMessage(@StringRes int messageResId) {
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
     }
 

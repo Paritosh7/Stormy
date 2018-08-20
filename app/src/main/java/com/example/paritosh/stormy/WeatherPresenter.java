@@ -35,9 +35,8 @@ public class WeatherPresenter {
 
 
     public void refreshWeatherData() {
-
-        weatherActivity.showMessage(R.string.toast_refreshing_data);
-
+        updateWeatherDetails();
+        weatherActivity.showMessage(R.string.refresh_data_message);
     }
 
 

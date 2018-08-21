@@ -16,7 +16,7 @@ import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 
 public class WeatherActivity extends AppCompatActivity implements WeatherContract.WeatherView {
 
-    private WeatherContract.WeatherPresenter weatherPresenter = new WeatherPresenterImpl(this);
+    private WeatherContract.WeatherPresenter presenter = new WeatherPresenterImpl(this);
     private ActivityMainBinding binding;
 
     @Override
@@ -30,11 +30,11 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
         refreshImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                weatherPresenter.refreshWeatherData();
+                presenter.refreshWeatherData();
             }
         });
 
-        weatherPresenter.updateWeatherDetails();
+        presenter.updateWeatherDetails();
     }
 
     @Override
@@ -50,14 +50,14 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
     }
 
     @Override
-    public void errorMessage(int titleResId, int messageResId) {
-        SabkaAlertDialogFragment.
-                newInstance(titleResId, messageResId)
+    public void showErrorMessage(int titleResId, int messageResId) {
+        SabkaAlertDialogFragment
+                .newInstance(titleResId, messageResId)
                 .show(getSupportFragmentManager(), "Error dialog");
     }
 
     @Override
-    public Context getContext() {
+    public Context loadContext() {
         return this;
     }
 

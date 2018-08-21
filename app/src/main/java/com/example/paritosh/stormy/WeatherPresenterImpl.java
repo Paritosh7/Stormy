@@ -16,7 +16,7 @@ public class WeatherPresenterImpl implements WeatherContract.WeatherPresenter {
 
     @Override
     public void updateWeatherDetails() {
-        if (Utils.isNetworkAvailable(view.getContext())) {
+        if (Utils.isNetworkAvailable(view.loadContext())) {
             weatherDataProvider.getCurrentWeather(new WeatherDataProvider.OnWeatherApiResponse() {
                 @Override
                 public void onSuccess(CurrentWeather weather) {
@@ -26,11 +26,11 @@ public class WeatherPresenterImpl implements WeatherContract.WeatherPresenter {
 
                 @Override
                 public void onError(Throwable t) {
-                    view.errorMessage(R.string.error_title, R.string.error_message);
+                    view.showErrorMessage(R.string.error_title, R.string.error_message);
                 }
             });
         } else {
-            view.errorMessage(R.string.error_title, R.string.connectivity_error_message);
+            view.showErrorMessage(R.string.error_title, R.string.connectivity_error_message);
         }
     }
 

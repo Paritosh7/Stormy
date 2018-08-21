@@ -16,9 +16,7 @@ import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 
 public class WeatherActivity extends AppCompatActivity implements WeatherContract.WeatherView {
 
-    private WeatherPresenterIMPL presenter = new WeatherPresenterIMPL(this);
-    private WeatherContract.WeatherPresenter weatherPresenter = presenter;
-
+    private WeatherContract.WeatherPresenter weatherPresenter = new WeatherPresenterImpl(this);
     private ActivityMainBinding binding;
 
     @Override
@@ -38,11 +36,13 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
 
         weatherPresenter.updateWeatherDetails();
     }
+
     @Override
     public void render(CurrentWeatherDataBindingModel model) {
         binding.setWeather(model);
 
     }
+
     @Override
     public void showMessage(@StringRes int messageResId) {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
@@ -50,18 +50,10 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
     }
 
     @Override
-    public void showApiFailError() {
-        SabkaAlertDialogFragment.newInstance(
-                R.string.error_title,
-                R.string.error_message
-        ).show(getSupportFragmentManager(), "error dialog");
-    }
-    @Override
-    public void showConnectivityError() {
-        SabkaAlertDialogFragment.newInstance(
-                R.string.connection_unavailable_title,
-                R.string.connectivity_error_message).
-                show(getSupportFragmentManager(), "connectivity error dialog");
+    public void errorMessage(int titleResId, int messageResId) {
+        SabkaAlertDialogFragment.
+                newInstance(titleResId, messageResId)
+                .show(getSupportFragmentManager(), "Error dialog");
     }
 
     @Override

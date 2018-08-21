@@ -14,9 +14,7 @@ public interface WeatherContract {
 
         void showMessage(@StringRes int messageResId);
 
-        void showApiFailError();
-
-        void showConnectivityError();
+        void errorMessage(@StringRes int titleResId, @StringRes int messageResId);
 
         Context getContext();
 

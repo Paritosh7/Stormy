@@ -1,5 +1,7 @@
 package com.example.paritosh.stormy;
 
+import android.support.annotation.NonNull;
+
 import com.example.paritosh.stormy.model.CurrentWeather;
 
 import org.json.JSONException;
@@ -39,7 +41,7 @@ public class WeatherDataProvider {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, Response response) throws IOException {
 
                 String jsonData = response.body().string();
 
@@ -48,8 +50,6 @@ public class WeatherDataProvider {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 

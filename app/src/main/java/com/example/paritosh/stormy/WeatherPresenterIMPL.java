@@ -3,40 +3,41 @@ package com.example.paritosh.stormy;
 import com.example.paritosh.stormy.model.CurrentWeather;
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 
-public class WeatherPresenter {
-    WeatherActivity weatherActivity;
+public class WeatherPresenterIMPL implements WeatherContract.WeatherPresenter {
+    private WeatherContract.WeatherView weatherView;
 
 
-    WeatherPresenter(WeatherActivity weatherActivity) {
-        this.weatherActivity = weatherActivity;
+    WeatherPresenterIMPL(WeatherContract.WeatherView weatherView) {
+        this.weatherView = weatherView;
+
     }
-
 
     private WeatherDataProvider weatherDataProvider = new WeatherDataProvider();
 
+    @Override
     public void updateWeatherDetails() {
-        if (Utils.isNetworkAvailable(weatherActivity)) {
+        if (Utils.isNetworkAvailable(weatherView.getContext())) {
             weatherDataProvider.getCurrentWeather(new WeatherDataProvider.OnWeatherApiResponse() {
                 @Override
                 public void onSuccess(CurrentWeather weather) {
                     CurrentWeatherDataBindingModel model = Utils.convertCurrentWeatherToDataBindingModel(weather);
-                    weatherActivity.render(model);
+                    weatherView.render(model);
                 }
 
                 @Override
                 public void onError(Throwable t) {
-                    weatherActivity.showApiFailError();
+                    weatherView.showApiFailError();
                 }
             });
         } else {
-            weatherActivity.showConnectivityError();
+            weatherView.showConnectivityError();
         }
     }
 
-
+    @Override
     public void refreshWeatherData() {
         updateWeatherDetails();
-        weatherActivity.showMessage(R.string.refresh_data_message);
+        weatherView.showMessage(R.string.refresh_data_message);
     }
 
 

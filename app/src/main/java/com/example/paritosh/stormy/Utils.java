@@ -43,7 +43,7 @@ public class Utils {
         return dataBindingModel;
     }
 
-    private static int getIconId(String icon) {
+    public static int getIconId(String icon) {
 
         //clear-day, clear-night, rain, snow, sleet, wind,
         // fog, cloudy, partly-cloudy-day, or partly-cloudy-night
@@ -81,7 +81,7 @@ public class Utils {
         return iconId;
     }
 
-    private static String getReadableTime(long time, String locationLabel) {
+    public static String getReadableTime(long time, String locationLabel) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(locationLabel));

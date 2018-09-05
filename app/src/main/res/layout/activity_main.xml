@@ -44,7 +44,7 @@
             app:srcCompat="@drawable/degree" />
 
         <TextView
-            android:id="@+id/timeValue"
+            android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -67,7 +67,7 @@
             android:text="@{weather.locationLabel, default=`Delhi`}"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/timeValue"
+            app:layout_constraintBottom_toTopOf="@+id/timeText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -76,11 +76,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:src="@{weather.iconRes}"
             app:layout_constraintBottom_toBottomOf="@+id/locationValue"
             app:layout_constraintEnd_toStartOf="@+id/locationValue"
             app:layout_constraintTop_toTopOf="@+id/locationValue"
-            app:srcCompat="@drawable/clear_day"
-            android:src="@{weather.iconRes}"/>
+            app:srcCompat="@drawable/clear_day" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline9"
@@ -189,7 +189,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/refresh"/>
+            app:srcCompat="@drawable/refresh" />
+
+        <Button
+            android:id="@+id/hourly_button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#40ffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="HOURLY FORECAST"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/darkSkyAttribution"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summaryValue" />
 
     </android.support.constraint.ConstraintLayout>
 

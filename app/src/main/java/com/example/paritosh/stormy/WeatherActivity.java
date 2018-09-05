@@ -1,23 +1,27 @@
 package com.example.paritosh.stormy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.paritosh.stormy.databinding.ActivityMainBinding;
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
+import com.example.paritosh.stormy.model.Hourly;
 
 public class WeatherActivity extends AppCompatActivity implements WeatherContract.WeatherView {
 
     private WeatherContract.WeatherPresenter presenter = new WeatherPresenterImpl(this);
     private ActivityMainBinding binding;
+    private Hourly[] hourlyData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,30 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
         });
 
         presenter.updateWeatherDetails();
+        Button hourlyButton = findViewById(R.id.hourly_button);
+        hourlyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeatherActivity.this,
+                        HourlyForecast.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArray("hourlyData", hourlyData);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public void render(CurrentWeatherDataBindingModel model) {
         binding.setWeather(model);
 
+    }
+
+    @Override
+    public void loadHourlyData(Hourly[] hourlyData) {
+        this.hourlyData = hourlyData;
     }
 
     @Override

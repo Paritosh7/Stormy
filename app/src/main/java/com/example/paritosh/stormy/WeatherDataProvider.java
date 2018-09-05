@@ -3,7 +3,9 @@ package com.example.paritosh.stormy;
 import android.support.annotation.NonNull;
 
 import com.example.paritosh.stormy.model.CurrentWeather;
+import com.example.paritosh.stormy.model.Hourly;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,13 +48,37 @@ public class WeatherDataProvider {
                 String jsonData = response.body().string();
 
                 try {
-                    onWeatherApiResponse.onSuccess(getCurrentDetails(jsonData));
+                    onWeatherApiResponse.onSuccess(getCurrentDetails(jsonData), hourlyDetails(jsonData));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
 
+    }
+
+    private Hourly[] hourlyDetails(String jsonData) throws JSONException {
+
+        JSONObject jsonObject = new JSONObject(jsonData);
+
+        Hourly.locationLabel = jsonObject.getString("timezone");
+
+        JSONObject hourlyObject = jsonObject.getJSONObject("hourly");
+        JSONArray hourlyData = hourlyObject.getJSONArray("data");
+        Hourly[] hourly = new Hourly[hourlyData.length()];
+        for (int i = 0; i < hourlyData.length(); i++) {
+            Hourly hour = new Hourly();
+            JSONObject data = hourlyData.getJSONObject(i);
+
+            hour.setSummary(data.getString("summary"));
+            hour.setTemperature(data.getDouble("temperature"));
+            hour.setIcon(Utils.getIconId(data.getString("icon")));
+            hour.setTime(Utils.getReadableTime(data.getLong("time"),
+                    Hourly.locationLabel));
+
+            hourly[i] = hour;
+        }
+        return hourly;
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException {
@@ -78,7 +104,8 @@ public class WeatherDataProvider {
     }
 
     public interface OnWeatherApiResponse {
-        public void onSuccess(CurrentWeather weather);
+        public void onSuccess(CurrentWeather weather, Hourly[] hourly);
+
         public void onError(Throwable t);
     }
 }

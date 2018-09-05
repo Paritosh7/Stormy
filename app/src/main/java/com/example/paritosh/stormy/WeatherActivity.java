@@ -17,11 +17,13 @@ import com.example.paritosh.stormy.databinding.ActivityMainBinding;
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 import com.example.paritosh.stormy.model.Hourly;
 
+import java.util.ArrayList;
+
 public class WeatherActivity extends AppCompatActivity implements WeatherContract.WeatherView {
 
     private WeatherContract.WeatherPresenter presenter = new WeatherPresenterImpl(this);
     private ActivityMainBinding binding;
-    private Hourly[] hourlyData;
+    private ArrayList<Hourly> hourlyData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
             public void onClick(View v) {
                 Intent intent = new Intent(WeatherActivity.this,
                         HourlyForecast.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArray("hourlyData", hourlyData);
-                intent.putExtras(bundle);
+                intent.putParcelableArrayListExtra("hourlyData",hourlyData);
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
     }
 
     @Override
-    public void loadHourlyData(Hourly[] hourlyData) {
+    public void loadHourlyData(ArrayList<Hourly> hourlyData) {
         this.hourlyData = hourlyData;
     }
 

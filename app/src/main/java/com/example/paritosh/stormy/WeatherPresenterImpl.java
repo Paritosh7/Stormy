@@ -4,6 +4,8 @@ import com.example.paritosh.stormy.model.CurrentWeather;
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 import com.example.paritosh.stormy.model.Hourly;
 
+import java.util.ArrayList;
+
 public class WeatherPresenterImpl implements WeatherContract.WeatherPresenter {
 
 
@@ -23,7 +25,7 @@ public class WeatherPresenterImpl implements WeatherContract.WeatherPresenter {
         if (Utils.isNetworkAvailable(view.loadContext())) {
             weatherDataProvider.getCurrentWeather(new WeatherDataProvider.OnWeatherApiResponse() {
                 @Override
-                public void onSuccess(CurrentWeather weather, Hourly[] hourly) {
+                public void onSuccess(CurrentWeather weather, ArrayList<Hourly> hourly) {
                     CurrentWeatherDataBindingModel model = Utils.convertCurrentWeatherToDataBindingModel(weather);
                     view.render(model);
                     view.loadHourlyData(hourly);

@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -57,7 +58,7 @@ public class WeatherDataProvider {
 
     }
 
-    private Hourly[] hourlyDetails(String jsonData) throws JSONException {
+    private ArrayList<Hourly> hourlyDetails(String jsonData) throws JSONException {
 
         JSONObject jsonObject = new JSONObject(jsonData);
 
@@ -65,7 +66,7 @@ public class WeatherDataProvider {
 
         JSONObject hourlyObject = jsonObject.getJSONObject("hourly");
         JSONArray hourlyData = hourlyObject.getJSONArray("data");
-        Hourly[] hourly = new Hourly[hourlyData.length()];
+        ArrayList<Hourly> hourly = new ArrayList<>();
         for (int i = 0; i < hourlyData.length(); i++) {
             Hourly hour = new Hourly();
             JSONObject data = hourlyData.getJSONObject(i);
@@ -76,7 +77,7 @@ public class WeatherDataProvider {
             hour.setTime(Utils.getReadableTime(data.getLong("time"),
                     Hourly.locationLabel));
 
-            hourly[i] = hour;
+            hourly.add(i, hour);
         }
         return hourly;
     }
@@ -104,7 +105,7 @@ public class WeatherDataProvider {
     }
 
     public interface OnWeatherApiResponse {
-        public void onSuccess(CurrentWeather weather, Hourly[] hourly);
+        public void onSuccess(CurrentWeather weather, ArrayList<Hourly> hourly);
 
         public void onError(Throwable t);
     }

@@ -12,11 +12,13 @@ import android.widget.TextView;
 import com.example.paritosh.stormy.R;
 import com.example.paritosh.stormy.model.Hourly;
 
+import java.util.ArrayList;
+
 public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourHolder> {
     LayoutInflater inflater;
-    Hourly[] hourly;
+    ArrayList<Hourly> hourly;
 
-    public HourAdapter(Hourly[] hourly, Context context) {
+    public HourAdapter(ArrayList<Hourly> hourly, Context context) {
         inflater = LayoutInflater.from(context);
         this.hourly = hourly;
     }
@@ -33,16 +35,16 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourHolder> {
     public void onBindViewHolder(@NonNull HourHolder holder, int position) {
 
 
-        holder.iconImage.setImageResource(hourly[position].getIcon());
-        holder.summaryText.setText(hourly[position].getSummary());
-        holder.temperatureText.setText(hourly[position].getTemperature() + "");
-        holder.timeText.setText(hourly[position].getTime());
+        holder.iconImage.setImageResource(hourly.get(position).getIcon());
+        holder.summaryText.setText(hourly.get(position).getSummary());
+        holder.temperatureText.setText(hourly.get(position).getTemperature() + "");
+        holder.timeText.setText(hourly.get(position).getTime());
 
     }
 
     @Override
     public int getItemCount() {
-        return hourly.length;
+        return hourly.size();
     }
 
     public class HourHolder extends RecyclerView.ViewHolder {

@@ -4,35 +4,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.DrawableRes;
 
-public class Hourly implements Parcelable {
+public class HourlyForecastModel implements Parcelable {
 
-    private @DrawableRes
-    int icon;
+    private @DrawableRes int icon;
     private String time;
     private String summary;
     private double temperature;
-    public static String locationLabel;
 
-    public Hourly() {
+    public HourlyForecastModel() {
 
     }
 
-    protected Hourly(Parcel in) {
+    protected HourlyForecastModel(Parcel in) {
         icon = in.readInt();
         time = in.readString();
         summary = in.readString();
         temperature = in.readDouble();
     }
 
-    public static final Creator<Hourly> CREATOR = new Creator<Hourly>() {
+    public static final Creator<HourlyForecastModel> CREATOR = new Creator<HourlyForecastModel>() {
         @Override
-        public Hourly createFromParcel(Parcel in) {
-            return new Hourly(in);
+        public HourlyForecastModel createFromParcel(Parcel in) {
+            return new HourlyForecastModel(in);
         }
 
         @Override
-        public Hourly[] newArray(int size) {
-            return new Hourly[size];
+        public HourlyForecastModel[] newArray(int size) {
+            return new HourlyForecastModel[size];
         }
     };
 

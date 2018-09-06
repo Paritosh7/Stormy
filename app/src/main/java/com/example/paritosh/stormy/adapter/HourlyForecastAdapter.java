@@ -1,6 +1,5 @@
 package com.example.paritosh.stormy.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,29 +9,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.paritosh.stormy.R;
-import com.example.paritosh.stormy.model.Hourly;
+import com.example.paritosh.stormy.model.HourlyForecastModel;
 
 import java.util.ArrayList;
 
-public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourHolder> {
-    LayoutInflater inflater;
-    ArrayList<Hourly> hourly;
+public class HourlyForecastAdapter extends RecyclerView.Adapter<HourlyForecastAdapter.HourlyForecastViewHolder> {
 
-    public HourAdapter(ArrayList<Hourly> hourly, Context context) {
-        inflater = LayoutInflater.from(context);
+    private ArrayList<HourlyForecastModel> hourly;
+
+    public HourlyForecastAdapter(ArrayList<HourlyForecastModel> hourly) {
         this.hourly = hourly;
     }
 
     @NonNull
     @Override
-    public HourHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.hourly_list_item, parent, false);
+    public HourlyForecastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new HourHolder(view);
+        return new HourlyForecastViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.hourly_list_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HourHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HourlyForecastViewHolder holder, int position) {
 
 
         holder.iconImage.setImageResource(hourly.get(position).getIcon());
@@ -47,12 +45,12 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourHolder> {
         return hourly.size();
     }
 
-    public class HourHolder extends RecyclerView.ViewHolder {
+    class HourlyForecastViewHolder extends RecyclerView.ViewHolder {
 
         TextView timeText, temperatureText, summaryText;
         ImageView iconImage;
 
-        public HourHolder(View itemView) {
+        public HourlyForecastViewHolder(View itemView) {
             super(itemView);
             timeText = itemView.findViewById(R.id.timeText);
             temperatureText = itemView.findViewById(R.id.temperatureText);

@@ -39,6 +39,7 @@ public class Utils {
         dataBindingModel.setTemperature(currentWeather.getTemperature());
         dataBindingModel.setIconRes(getIconId(currentWeather.getIcon()));
         dataBindingModel.setTimeString(getReadableTime(currentWeather.getTime(), currentWeather.getLocationLabel()));
+        dataBindingModel.setHourly(currentWeather.getHourly());
 
         return dataBindingModel;
     }

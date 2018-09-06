@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HourlyForecast"></activity>
+        <activity android:name=".HourlyForecastActivity"></activity>
     </application>
 
 </manifest>

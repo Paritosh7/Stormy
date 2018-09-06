@@ -5,17 +5,12 @@ import android.content.Context;
 import android.support.annotation.StringRes;
 
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
-import com.example.paritosh.stormy.model.Hourly;
-
-import java.util.ArrayList;
 
 public interface WeatherContract {
 
     interface WeatherView {
 
         void render(CurrentWeatherDataBindingModel model);
-
-        void loadHourlyData(ArrayList<Hourly> hourlyData);
 
         void showMessage(@StringRes int messageResId);
 

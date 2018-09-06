@@ -4,8 +4,9 @@ import com.example.paritosh.stormy.model.CurrentWeather;
 import com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel;
 
 public class WeatherPresenterImpl implements WeatherContract.WeatherPresenter {
-    private WeatherContract.WeatherView view;
 
+
+    private WeatherContract.WeatherView view;
 
     WeatherPresenterImpl(WeatherContract.WeatherView view) {
         this.view = view;

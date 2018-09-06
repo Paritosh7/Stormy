@@ -2,9 +2,7 @@ package com.example.paritosh.stormy.model;
 
 import android.support.annotation.DrawableRes;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.ArrayList;
 
 public class CurrentWeatherDataBindingModel {
 
@@ -15,10 +13,13 @@ public class CurrentWeatherDataBindingModel {
     private double humidity;
     private double precipChance;
     private String summary;
+    private ArrayList<HourlyForecastModel> hourly;
+
 
     public CurrentWeatherDataBindingModel() {
 
     }
+
 
     public String getLocationLabel() {
         return locationLabel;
@@ -74,5 +75,13 @@ public class CurrentWeatherDataBindingModel {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public ArrayList<HourlyForecastModel> getHourly() {
+        return hourly;
+    }
+
+    public void setHourly(ArrayList<HourlyForecastModel> hourly) {
+        this.hourly = hourly;
     }
 }

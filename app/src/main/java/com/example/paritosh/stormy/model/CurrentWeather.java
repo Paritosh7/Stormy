@@ -1,8 +1,6 @@
 package com.example.paritosh.stormy.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.ArrayList;
 
 public class CurrentWeather {
 
@@ -13,20 +11,10 @@ public class CurrentWeather {
     private double humidity;
     private double precipChance;
     private String summary;
+    private ArrayList<HourlyForecastModel> hourly;
 
     public CurrentWeather() {
 
-    }
-
-    public CurrentWeather(String locationLabel, String icon, long time, double temperature,
-                          double humidity, double precipChance, String summary) {
-        this.locationLabel = locationLabel;
-        this.icon = icon;
-        this.time = time;
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.precipChance = precipChance;
-        this.summary = summary;
     }
 
     public String getLocationLabel() {
@@ -84,4 +72,13 @@ public class CurrentWeather {
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
+    public ArrayList<HourlyForecastModel> getHourly() {
+        return hourly;
+    }
+
+    public void setHourly(ArrayList<HourlyForecastModel> hourly) {
+        this.hourly = hourly;
+    }
+
 }

@@ -12,14 +12,13 @@ import java.util.ArrayList;
 
 public class HourlyForecastActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ArrayList<HourlyForecastModel> hourlyData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hourly_forecast);
-        hourlyData = getIntent().getParcelableArrayListExtra("hourlyData");
+        ArrayList<HourlyForecastModel> hourlyData = getIntent().getParcelableArrayListExtra("hourlyData");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(new HourlyForecastAdapter(hourlyData));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -8,7 +8,7 @@
 
         <variable
             name="weather"
-            type="com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel" />
+            type="com.example.paritosh.stormy.model.CurrentWeatherDataBindingModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/degreeImageView"
@@ -41,7 +41,7 @@
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toEndOf="@+id/temperatureValue"
             app:layout_constraintTop_toTopOf="@+id/temperatureValue"
-            app:srcCompat="@drawable/degree" />
+            app:srcCompat="@drawable/degree"/>
 
         <TextView
             android:id="@+id/timeText"
@@ -55,7 +55,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/temperatureValue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/locationValue"
@@ -69,7 +69,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/timeText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
             android:id="@+id/iconImageView"
@@ -80,21 +80,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/locationValue"
             app:layout_constraintEnd_toStartOf="@+id/locationValue"
             app:layout_constraintTop_toTopOf="@+id/locationValue"
-            app:srcCompat="@drawable/clear_day" />
+            app:srcCompat="@drawable/clear_day"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.33" />
+            app:layout_constraintGuide_percent="0.33"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.66" />
+            app:layout_constraintGuide_percent="0.66"/>
 
         <TextView
             android:id="@+id/humidityLabel"
@@ -109,7 +109,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline9"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureValue" />
+            app:layout_constraintTop_toBottomOf="@+id/temperatureValue"/>
 
         <TextView
             android:id="@+id/prepipitationLabel"
@@ -123,7 +123,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureValue" />
+            app:layout_constraintTop_toBottomOf="@+id/temperatureValue"/>
 
         <TextView
             android:id="@+id/humidityValue"
@@ -136,7 +136,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="@+id/humidityLabel"
             app:layout_constraintStart_toStartOf="@+id/humidityLabel"
-            app:layout_constraintTop_toBottomOf="@+id/humidityLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/humidityLabel"/>
 
         <TextView
             android:id="@+id/precipValue"
@@ -149,7 +149,7 @@
             android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/prepipitationLabel"
             app:layout_constraintStart_toStartOf="@+id/prepipitationLabel"
-            app:layout_constraintTop_toBottomOf="@+id/prepipitationLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/prepipitationLabel"/>
 
         <TextView
             android:id="@+id/summaryValue"
@@ -163,7 +163,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/precipValue" />
+            app:layout_constraintTop_toBottomOf="@+id/precipValue"/>
 
         <TextView
             android:id="@+id/darkSkyAttribution"
@@ -176,7 +176,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
             android:id="@+id/refreshImageView"
@@ -189,7 +189,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/refresh" />
+            app:srcCompat="@drawable/refresh"/>
 
         <Button
             android:id="@+id/hourly_button"
@@ -207,7 +207,7 @@
             app:layout_constraintBottom_toTopOf="@+id/darkSkyAttribution"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/summaryValue" />
+            app:layout_constraintTop_toBottomOf="@+id/summaryValue"/>
 
     </android.support.constraint.ConstraintLayout>
 

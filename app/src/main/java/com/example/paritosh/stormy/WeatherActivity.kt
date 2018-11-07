@@ -17,10 +17,10 @@ import java.util.*
 
 class WeatherActivity : AppCompatActivity(), WeatherContract.WeatherView {
 
-    lateinit var hourlyData: ArrayList<HourlyForecastModel>
-    lateinit var binding: ActivityMainBinding
+    private lateinit var hourlyData: ArrayList<HourlyForecastModel>
+    private lateinit var binding: ActivityMainBinding
 
-    val presenter: WeatherContract.WeatherPresenter = WeatherPresenterImpl(this)
+    private val presenter: WeatherContract.WeatherPresenter = WeatherPresenterImpl(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

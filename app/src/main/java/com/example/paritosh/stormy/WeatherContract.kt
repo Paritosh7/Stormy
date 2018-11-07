@@ -11,7 +11,7 @@ interface WeatherContract {
 
         fun showMessage(messageResId: Int)
 
-        fun showErrorMessage(titleRestId: Int, messageResId: Int)
+        fun showErrorMessage(titleResId: Int, messageResId: Int)
 
         fun loadContext(): Context
     }

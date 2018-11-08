@@ -13,7 +13,7 @@ class HourlyForecastActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hourly_forecast)
-        val hourlyData: ArrayList<HourlyForecastModel> = getIntent()
+        val hourlyData: ArrayList<HourlyForecastModel> = intent
                 .getParcelableArrayListExtra("hourlyData")
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = HourlyForecastAdapter(hourlyData)

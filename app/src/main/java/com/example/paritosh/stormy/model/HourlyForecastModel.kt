@@ -13,7 +13,7 @@ class HourlyForecastModel : Parcelable {
 
     constructor()
 
-    protected constructor(`in`: Parcel) {
+    constructor(`in`: Parcel) {
         icon = `in`.readInt()
         time = `in`.readString()
         summary = `in`.readString()

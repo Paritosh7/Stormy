@@ -42,7 +42,7 @@ class Utils {
             "cloudy" -> R.drawable.cloudy
             "partly-cloudy-day" -> R.drawable.partly_cloudy
             "partly-cloudy-night" -> R.drawable.clear_night
-            else -> R.drawable.clear_night
+            else -> R.drawable.clear_day
         }
     }
 
